@@ -1,0 +1,204 @@
+:root {
+    /* Основные цветовые переменные для быстрой настройки темы */
+    --bg-color: #f4f7fa;          /* фон страницы */
+    --primary-color: #3c7777;     /* основной цвет (например, для header и кнопок) */
+    --accent-color: #f4b41a;      /* акцентный цвет (эффекты, hover) */
+    --text-color: #333;           /* цвет основного текста */
+    --card-bg: #ffffff;           /* фон карточек и блоков */
+}
+
+* {
+    /* Универсальное правило для удобной работы с размерами элементов 
+       - учитываются padding и border */
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;                /* убираем отступы по умолчанию */
+    font-family: "Segoe UI", Arial, sans-serif; /* шрифт для комфортного чтения */
+    background: var(--bg-color); /* задаём фоновый цвет страницы */
+    color: var(--text-color);   /* цвет текста */
+    line-height: 1.6;          /* межстрочный интервал для удобства чтения */
+}
+
+/* ===== Шапка ===== */
+header {
+    /* Градиентный фон для шапки сайта */
+    background: linear-gradient(90deg, var(--primary-color), #79a7a7);
+    color: white;              /* белый цвет текста */
+    padding: 20px 40px;        /* внутренние отступы сверху/снизу и слева/справа */
+}
+
+header h1 {
+    margin: 0;                 /* убираем отступы вокруг заголовка */
+}
+
+/* ===== Навигация ===== */
+nav ul {
+    list-style: none;          /* убираем маркеры списка */
+    padding: 0;                /* убираем внутренние отступы */
+    margin: 15px 0 0;          /* внешний отступ сверху 15px */
+    display: flex;             /* включаем флекс для горизонтального расположения */
+    gap: 25px;                 /* отступы между пунктами меню */
+}
+
+nav a {
+    color: white;              /* белый цвет текста ссылок */
+    text-decoration: none;     /* убираем стандартное подчёркивание */
+    font-weight: 600;          /* чуть жирнее для акцента */
+    position: relative;        /* нужно для псевдоэлемента ::after */
+}
+
+nav a::after {
+    /* Создаём анимацию «подчёркивания» при наведении */
+    content: "";
+    position: absolute;
+    bottom: -5px;              /* позиционируем снизу */
+    left: 0;
+    width: 0;                  /* изначально ширина 0 */
+    height: 2px;               /* толщина линии */
+    background: var(--accent-color); /* цвет линии */
+    transition: 0.3s;          /* плавный переход */
+}
+
+nav a:hover::after {
+    width: 100%;               /* при наведении линия растягивается под весь текст */
+}
+
+/* ===== Основной контент ===== */
+main {
+    padding: 40px;             /* отступы вокруг основного контента */
+}
+
+section {
+    margin-bottom: 40px;       /* разделяем секции вертикальным отступом */
+}
+
+/* ===== Таблицы ===== */
+table {
+    width: 100%;               /* таблица занимает всю ширину контейнера */
+    border-collapse: collapse; /* убираем двойные границы */
+    background: white;         /* фон таблицы - белый */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* лёгкая тень для объёма */
+}
+
+th {
+    background: var(--primary-color); /* фон заголовков таблицы */
+    color: white;                     /* цвет текста заголовков */
+}
+
+th, td {
+    padding: 12px;             /* внутренние отступы в ячейках */
+    text-align: center;        /* выравнивание текста по центру */
+}
+
+/* ===== Карточки ===== */
+.cards {
+    display: flex;             /* гибкое расположение карточек в ряд */
+    gap: 25px;                 /* расстояние между карточками */
+    flex-wrap: wrap;           /* перенос карточек на следующую строку при необходимости */
+}
+
+.card {
+    background: var(--card-bg); /* фон карточки */
+    width: 300px;               /* фиксированная ширина */
+    border-radius: 12px;        /* скругление углов */
+    overflow: hidden;           /* скрыть выходящий за границы контент */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12); /* тень для эффекта подъёма */
+    transition: transform 0.3s; /* плавная анимация при трансформации */
+}
+
+.card:hover {
+    transform: translateY(-8px); /* плавный подъём карточки при наведении */
+}
+
+.card img {
+    width: 100%;               /* изображение занимает всю ширину */
+    height: 200px;             /* фиксированная высота */
+    object-fit: cover;         /* обрезка без искажения */
+}
+
+.card h3 {
+    padding: 15px 15px 0;      /* отступ сверху и по бокам для заголовка */
+}
+
+.card p, .card ul {
+    padding: 0 15px 15px;      /* отступы для текста и списков в карточке */
+}
+
+/* ===== Галерея ===== */
+.gallery {
+    display: grid;             /* создаём сетку для галереи */
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки равной ширины */
+    gap: 25px;                 /* расстояния между элементами */
+}
+
+.gallery figure {
+    background: white;         /* фон фигуры */
+    border-radius: 10px;       /* скругление углов */
+    overflow: hidden;          /* обрезка лишнего */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* тень для объёма */
+}
+
+.gallery img {
+    width: 100%;               /* изображение во всю ширину */
+    height: 220px;             /* фиксированная высота */
+    object-fit: cover;         /* обрезка без искажения */
+}
+
+figcaption {
+    padding: 10px;             /* внутренние отступы для подписи */
+    text-align: center;        /* выравнивание по центру */
+    font-weight: 500;          /* средняя насыщенность шрифта */
+}
+
+/* ===== Форма ===== */
+form {
+    max-width: 500px;          /* максимальная ширина формы */
+    background: white;         /* белый фон */
+    padding: 25px;             /* внутренние отступы */
+    border-radius: 10px;       /* скругление углов */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12); /* тень */
+}
+
+form label {
+    font-weight: 600;          /* жирный шрифт для меток */
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;               /* элементы на всю ширину формы */
+    padding: 10px;             /* внутренние отступы */
+    margin: 8px 0 20px;        /* внешние отступы сверху и снизу */
+    border-radius: 6px;        /* скруглённые углы */
+    border: 1px solid #ccc;    /* светлая рамка */
+}
+
+form input:focus,
+form textarea:focus {
+    outline: none;             /* убираем стандартное выделение */
+    border-color: var(--accent-color); /* выделение рамки при фокусе */
+}
+
+button {
+    background: var(--primary-color); /* фон кнопки */
+    color: white;             /* цвет текста кнопки */
+    border: none;
+    padding: 12px;            /* внутренние отступы */
+    border-radius: 6px;       /* скругление углов */
+    cursor: pointer;          /* указатель-рука при наведении */
+}
+
+button:hover {
+    background: var(--accent-color); /* изменение фона при наведении */
+    color: black;                    /* изменение цвета текста */
+}
+
+/* ===== Подвал ===== */
+footer {
+    background: #3c7777;        /* тёмно-синий фон */
+    color: white;               /* белый текст */
+    text-align: center;         /* выравнивание текста по центру */
+    padding: 15px;              /* внутренние отступы */
+}
