@@ -1,0 +1,20 @@
+@media (max-width: 1024px) {
+    /* При ширине экрана 1024px и меньше меняем сетку галереи на 2 колонки */
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    /* При ширине экрана 768px и меньше меняем направление флекс-контейнера с рядного на колонку */
+    .cards {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    /* При ширине экрана 480px и меньше меняем направление списка навигации на вертикальное */
+    nav ul {
+        flex-direction: column;
+    }
+}
