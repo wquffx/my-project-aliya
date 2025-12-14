@@ -70,6 +70,10 @@ main {
     padding: 40px;             /* отступы вокруг основного контента */
 }
 
+main ul {
+    list-style: none;
+}
+
 section {
     margin-bottom: 40px;       /* разделяем секции вертикальным отступом */
 }
@@ -127,29 +131,34 @@ th, td {
 }
 
 /* ===== Галерея ===== */
-.gallery {
+.gallery-grid {
     display: grid;             /* создаём сетку для галереи */
     grid-template-columns: repeat(3, 1fr); /* 3 колонки равной ширины */
     gap: 25px;                 /* расстояния между элементами */
 }
 
-.gallery figure {
+main section figure {
     background: white;         /* фон фигуры */
     border-radius: 10px;       /* скругление углов */
     overflow: hidden;          /* обрезка лишнего */
     box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* тень для объёма */
+    transition: transform 0.3s;
 }
 
-.gallery img {
+main section img {
     width: 100%;               /* изображение во всю ширину */
     height: 220px;             /* фиксированная высота */
     object-fit: cover;         /* обрезка без искажения */
 }
 
-figcaption {
+main figcaption {
     padding: 10px;             /* внутренние отступы для подписи */
     text-align: center;        /* выравнивание по центру */
     font-weight: 500;          /* средняя насыщенность шрифта */
+}
+
+main section figure:hover {
+    transform: translateY(-8px); /* плавный подъём карточки при наведении */
 }
 
 /* ===== Форма ===== */
